@@ -18,8 +18,10 @@ makeCacheMatrix <- function(x = matrix())
     setinverse<- function(inverse) 
     {
         InversingMatrix <<-inverse
+        
+    }    
         getinverse <- function()
-    }
+    
     {
       InversingMatrix
     }
