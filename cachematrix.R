@@ -24,14 +24,16 @@ makeCacheMatrix <- function(x = matrix())
          getinverse = getinverse)
 }
 
-cachemean <- function(x, ...) {
-        m <- x$getmean()
-        if(!is.null(m)) {
-                message("getting cached data")
-                return(m)
-        }
-        data <- x$get()
-        m <- mean(data, ...)
-        x$setmean(m)
-        m
+
+
+cacheSolve <- function(x, ...) {
+    inv <- x$getinverse()
+    if(!is.null(InveringMatrix)) {
+        message("getting cached data.")
+        return(InveringMatrix)
+    }
+    data <- x$get()
+    InveringMatrix <- solve(data)
+    x$setinverse(InveringMatrix)
+    InveringMatrix
 }
